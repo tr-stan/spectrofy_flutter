@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  supabase_flutter: ^2.3.4
 
 dev_dependencies:
   flutter_test:
@@ -29,4 +30,5 @@ flutter:
 
   assets:
     # Add assets from the images directory to the application.
+    # spectrogram png source: Wikimedia https://upload.wikimedia.org/wikipedia/commons/1/1b/Spectrogram_of_two_phasers_in_parallel_%28fast_phase_90_and_slow_small_stone%29_on_white_noise.svg
     - assets/images/
