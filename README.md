@@ -1,30 +1,38 @@
 # spectrofy
 
-A new Flutter project.
+A flutter app that visualizes track audio data returned from Spotify's [`audio-analysis` endpoint](https://developer.spotify.com/documentation/web-api/reference/get-audio-analysis).
 
-## Getting Started
+## Current Features/Stories
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
+The main feature of this app is the 'Visualizer', which paints a picture on a canvas using the data returned for a given track from Spotify's web API.
+To start, the goal is to produce a semi-random, generated, abstract image using various datapoints from the audio analysis to determine each stroke.
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`Segment`s will be the first subject of the visualizer. The Spotify Web API's audio analysis endpoint provides a rich set of data on each song, breaking it down into segments as short as a few hundred milliseconds.
 
-## Assets
+An example of the segments section of the api's response data:
 
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
+```
+"segments": [
+  {
+    "start": 0.70154,
+    "duration": 0.19891,
+    "confidence": 0.435,
+    "loudness_start": -23.053,
+    "loudness_max": -14.25,
+    "loudness_max_time": 0.07305,
+    "loudness_end": 0,
+    "pitches": [
+      0.212,
+      0.141,
+      0.294
+    ],
+    "timbre": [
+      42.115,
+      64.373,
+      -0.233
+    ]
+  }
+]
+```
 
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
-
-## Localization
-
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
-
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter
-apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+Each stroke will represent one segment, varying based on the duration, confidence, loudness, pitches, and timbre. In the future, I would like to add flair with the loudness properties being fully utilized, and maybe even sync the visualization with each song's playback, sine the start and duration are given for each segment.
